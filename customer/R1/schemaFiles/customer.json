@@ -1,0 +1,1 @@
+{"type":"object","properties":{"first name":{"type":"string"},"lastName":{"type":"string"},"age":{"type":"number"}},"required":["first name","lastName","age"]}
