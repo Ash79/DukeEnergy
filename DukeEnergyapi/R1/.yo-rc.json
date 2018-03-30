@@ -1,0 +1,710 @@
+{
+  "generator-cedrus-api": {
+    "haveConfigFile": true,
+    "discover": {
+      "ask": false,
+      "apiConsumes": [
+        "application/json"
+      ],
+      "apiProduces": [
+        "application/json"
+      ]
+    },
+    "detail": {
+      "ask": false,
+      "isPublic": true,
+      "httpMethods": [
+        "get",
+        "post"
+      ],
+      "httpStatusCodes": [
+        "204",
+        "404",
+        "500"
+      ],
+      "versioning": {
+        "enabled": true,
+        "type": "uri",
+        "versionNumber": [
+          "v1"
+        ],
+        "uriOrder": "resourceFirst",
+        "contentTypeOrder": "applicationFirst",
+        "customHeaderName": "version"
+      },
+      "apiData": {
+        "returnDataType": "No"
+      },
+      "records": {
+        "limit": 10
+      },
+      "cache": {
+        "RedisEnable": false,
+        "RedisHost": "pub-redis-19334.dal-05.1.sl.garantiadata.com",
+        "RedisPort": "19334",
+        "RedisPassword": "zKvyYzznhsdvYwgq",
+        "RedisExpire": 180
+      },
+      "pagination": {
+        "PaginationEnable": true
+      },
+      "filter": {
+        "FilterEnable": false
+      },
+      "security": {
+        "enabled": true,
+        "type": "basic",
+        "basicUser": "ashraf@cedrus.digital",
+        "basicPassword": "C3drus20!6"
+      },
+      "logging": {
+        "enabled": false
+      }
+    },
+    "deploy": {
+      "ask": false,
+      "apiApplicationType": "nodejs",
+      "openWhisk": {
+        "OpenWhiskEnable": false
+      },
+      "tls": {
+        "TLSEnable": false
+      },
+      "cloudFoundry": {
+        "appName": "",
+        "appMemory": ""
+      },
+      "javaOptions": {
+        "basePackage": "io.cedrus.apigen",
+        "packagingType": "jar",
+        "framework": [
+          "jaxrs",
+          "jaxrs"
+        ],
+        "springBootDeployment": "tomcat"
+      }
+    },
+    "multipleResources": {
+      "enabled": true,
+      "resources": [
+        {
+          "resourceName": "schedule",
+          "jsonFilePath": "{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"active\":{\"type\":\"boolean\"},\"type\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"gatewaySerialNumber\":{\"type\":\"string\"},\"conditions\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"weekdays\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"startDate\":{\"type\":\"string\"},\"endDate\":{\"type\":\"string\"},\"startTime\":{\"type\":\"string\"},\"endTime\":{\"type\":\"string\"}},\"required\":[\"weekdays\",\"startDate\",\"endDate\",\"startTime\",\"endTime\"]}},\"devices\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"deviceId\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"},\"commands\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"body\":{\"type\":\"object\",\"properties\":{\"scale\":{\"type\":\"string\"},\"temperature\":{\"type\":\"number\"}},\"required\":[\"scale\",\"temperature\"]},\"command\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"}},\"required\":[\"body\",\"command\",\"id\"]}}},\"required\":[\"deviceId\",\"type\",\"commands\"]}}},\"required\":[\"name\",\"active\",\"type\",\"id\",\"gatewaySerialNumber\",\"conditions\",\"devices\"]}",
+          "isPublic": true,
+          "httpMethods": [
+            "get",
+            "post"
+          ],
+          "httpStatusCodes": [
+            "204",
+            "404",
+            "500"
+          ],
+          "requireTestDataType": "Test Data",
+          "apiFakerMappingFileProvided": true,
+          "apiFakeMappingFileType": "object",
+          "apiFakerMappingFileLocation": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "enum": [
+                  "Sunset",
+                  "WorkFenceEnter",
+                  "WorkFenceExit"
+                ]
+              },
+              "active": {
+                "type": "boolean"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "time",
+                  "thermostats"
+                ]
+              },
+              "id": {
+                "type": "string",
+                "enum": [
+                  "5aa0574397d27b476d128b9c",
+                  "5aa0574397d27b476d128b9e",
+                  "5aa0574397d27b476d128b9c"
+                ]
+              },
+              "gatewaySerialNumber": {
+                "type": "string",
+                "enum": [
+                  "TSBH10006605",
+                  "TSBH10006604",
+                  "TSBH10006603"
+                ]
+              },
+              "conditions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "weekdays": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "faker": "date.weekday"
+                      }
+                    },
+                    "startDate": {
+                      "type": "string",
+                      "faker": "date.past"
+                    },
+                    "endDate": {
+                      "type": "string",
+                      "faker": "date.future"
+                    },
+                    "startTime": {
+                      "type": "string",
+                      "enum": [
+                        "6:00PM",
+                        "7:00PM",
+                        "1:00PM",
+                        "12:00 AM"
+                      ]
+                    },
+                    "endTime": {
+                      "type": "string",
+                      "enum": [
+                        "01:00 PM",
+                        "02:00 PM",
+                        "03:00 AM",
+                        "05:00 PM"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "weekdays",
+                    "startDate",
+                    "endDate",
+                    "startTime",
+                    "endTime"
+                  ]
+                }
+              },
+              "devices": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "deviceId": {
+                      "type": "string",
+                      "enum": [
+                        "lightID_1",
+                        "lightID_2",
+                        "plugID",
+                        "thermostatID"
+                      ]
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "thermostats",
+                        "lights"
+                      ]
+                    },
+                    "commands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "body": {
+                            "type": "object",
+                            "properties": {
+                              "scale": {
+                                "type": "string"
+                              },
+                              "temperature": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 100
+                              }
+                            },
+                            "required": [
+                              "scale",
+                              "temperature"
+                            ]
+                          },
+                          "command": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "body",
+                          "command",
+                          "id"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "deviceId",
+                    "type",
+                    "commands"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "name",
+              "active",
+              "type",
+              "id",
+              "gatewaySerialNumber",
+              "conditions",
+              "devices"
+            ]
+          },
+          "apiFakerMappingJsonType": "Data Schema",
+          "recordsLimit": "5",
+          "requireQuery": false,
+          "whichParameter": null,
+          "fake_data": null
+        },
+        {
+          "resourceName": "order",
+          "jsonFilePath": "{\"type\":\"object\",\"properties\":{\"order_id\":{\"type\":\"string\"},\"order_name\":{\"type\":\"string\"},\"item\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}},\"required\":[\"order_id\",\"order_name\",\"item\"]}",
+          "isPublic": true,
+          "httpMethods": [
+            "get",
+            "put",
+            "post",
+            "patch",
+            "delete"
+          ],
+          "httpStatusCodes": [
+            "204",
+            "404",
+            "500"
+          ],
+          "requireTestDataType": "Test Data",
+          "apiFakerMappingFileProvided": true,
+          "apiFakeMappingFileType": "object",
+          "apiFakerMappingFileLocation": {
+            "type": "object",
+            "properties": {
+              "order_id": {
+                "type": "string"
+              },
+              "order_name": {
+                "type": "string"
+              },
+              "item": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "order_id",
+              "order_name",
+              "item"
+            ]
+          },
+          "apiFakerMappingJsonType": "Data Schema",
+          "recordsLimit": "5",
+          "requireQuery": false,
+          "whichParameter": null,
+          "fake_data": null
+        }
+      ],
+      "testingMode": false
+    },
+    "javaOptions": {
+      "basePackage": "io.cedrus.apigen",
+      "packagingType": "jar",
+      "framework": [
+        "jaxrs",
+        "jaxrs"
+      ],
+      "springBootDeployment": "tomcat"
+    },
+    "apiOverview": {
+      "apiName": "DukeEnergyapi",
+      "apiBasePath": "/api",
+      "apiDescription": "This is sample API being generated by cedrus-api generator"
+    },
+    "dataInput": {
+      "dataInputType": "JSON Input"
+    },
+    "JSONExtraction": [
+      {
+        "resourceName": "schedule",
+        "jsonFilePath": "{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"active\":{\"type\":\"boolean\"},\"type\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"gatewaySerialNumber\":{\"type\":\"string\"},\"conditions\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"weekdays\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"startDate\":{\"type\":\"string\"},\"endDate\":{\"type\":\"string\"},\"startTime\":{\"type\":\"string\"},\"endTime\":{\"type\":\"string\"}},\"required\":[\"weekdays\",\"startDate\",\"endDate\",\"startTime\",\"endTime\"]}},\"devices\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"deviceId\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"},\"commands\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"body\":{\"type\":\"object\",\"properties\":{\"scale\":{\"type\":\"string\"},\"temperature\":{\"type\":\"number\"}},\"required\":[\"scale\",\"temperature\"]},\"command\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"}},\"required\":[\"body\",\"command\",\"id\"]}}},\"required\":[\"deviceId\",\"type\",\"commands\"]}}},\"required\":[\"name\",\"active\",\"type\",\"id\",\"gatewaySerialNumber\",\"conditions\",\"devices\"]}",
+        "isPublic": true,
+        "httpMethods": [
+          "get",
+          "post"
+        ],
+        "httpStatusCodes": [
+          "204",
+          "404",
+          "500"
+        ],
+        "requireTestDataType": "Test Data",
+        "apiFakerMappingFileProvided": true,
+        "apiFakeMappingFileType": "object",
+        "apiFakerMappingFileLocation": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "enum": [
+                "Sunset",
+                "WorkFenceEnter",
+                "WorkFenceExit"
+              ]
+            },
+            "active": {
+              "type": "boolean"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "time",
+                "thermostats"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "enum": [
+                "5aa0574397d27b476d128b9c",
+                "5aa0574397d27b476d128b9e",
+                "5aa0574397d27b476d128b9c"
+              ]
+            },
+            "gatewaySerialNumber": {
+              "type": "string",
+              "enum": [
+                "TSBH10006605",
+                "TSBH10006604",
+                "TSBH10006603"
+              ]
+            },
+            "conditions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "weekdays": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "faker": "date.weekday"
+                    }
+                  },
+                  "startDate": {
+                    "type": "string",
+                    "faker": "date.past"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "faker": "date.future"
+                  },
+                  "startTime": {
+                    "type": "string",
+                    "enum": [
+                      "6:00PM",
+                      "7:00PM",
+                      "1:00PM",
+                      "12:00 AM"
+                    ]
+                  },
+                  "endTime": {
+                    "type": "string",
+                    "enum": [
+                      "01:00 PM",
+                      "02:00 PM",
+                      "03:00 AM",
+                      "05:00 PM"
+                    ]
+                  }
+                },
+                "required": [
+                  "weekdays",
+                  "startDate",
+                  "endDate",
+                  "startTime",
+                  "endTime"
+                ]
+              }
+            },
+            "devices": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "deviceId": {
+                    "type": "string",
+                    "enum": [
+                      "lightID_1",
+                      "lightID_2",
+                      "plugID",
+                      "thermostatID"
+                    ]
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "thermostats",
+                      "lights"
+                    ]
+                  },
+                  "commands": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "scale": {
+                              "type": "string"
+                            },
+                            "temperature": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 100
+                            }
+                          },
+                          "required": [
+                            "scale",
+                            "temperature"
+                          ]
+                        },
+                        "command": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "body",
+                        "command",
+                        "id"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "deviceId",
+                  "type",
+                  "commands"
+                ]
+              }
+            }
+          },
+          "required": [
+            "name",
+            "active",
+            "type",
+            "id",
+            "gatewaySerialNumber",
+            "conditions",
+            "devices"
+          ]
+        },
+        "apiFakerMappingJsonType": "Data Schema",
+        "recordsLimit": "5",
+        "requireQuery": false,
+        "whichParameter": null,
+        "fake_data": null,
+        "jsonSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "active": {
+              "type": "boolean"
+            },
+            "type": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "gatewaySerialNumber": {
+              "type": "string"
+            },
+            "conditions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "weekdays": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "startDate": {
+                    "type": "string"
+                  },
+                  "endDate": {
+                    "type": "string"
+                  },
+                  "startTime": {
+                    "type": "string"
+                  },
+                  "endTime": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "weekdays",
+                  "startDate",
+                  "endDate",
+                  "startTime",
+                  "endTime"
+                ]
+              }
+            },
+            "devices": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "deviceId": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "commands": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "body": {
+                          "type": "object",
+                          "properties": {
+                            "scale": {
+                              "type": "string"
+                            },
+                            "temperature": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "scale",
+                            "temperature"
+                          ]
+                        },
+                        "command": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "body",
+                        "command",
+                        "id"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "deviceId",
+                  "type",
+                  "commands"
+                ]
+              }
+            }
+          },
+          "required": [
+            "name",
+            "active",
+            "type",
+            "id",
+            "gatewaySerialNumber",
+            "conditions",
+            "devices"
+          ]
+        }
+      },
+      {
+        "resourceName": "order",
+        "jsonFilePath": "{\"type\":\"object\",\"properties\":{\"order_id\":{\"type\":\"string\"},\"order_name\":{\"type\":\"string\"},\"item\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}},\"required\":[\"order_id\",\"order_name\",\"item\"]}",
+        "isPublic": true,
+        "httpMethods": [
+          "get",
+          "put",
+          "post",
+          "patch",
+          "delete"
+        ],
+        "httpStatusCodes": [
+          "204",
+          "404",
+          "500"
+        ],
+        "requireTestDataType": "Test Data",
+        "apiFakerMappingFileProvided": true,
+        "apiFakeMappingFileType": "object",
+        "apiFakerMappingFileLocation": {
+          "type": "object",
+          "properties": {
+            "order_id": {
+              "type": "string"
+            },
+            "order_name": {
+              "type": "string"
+            },
+            "item": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "order_id",
+            "order_name",
+            "item"
+          ]
+        },
+        "apiFakerMappingJsonType": "Data Schema",
+        "recordsLimit": "5",
+        "requireQuery": false,
+        "whichParameter": null,
+        "fake_data": null,
+        "jsonSchema": {
+          "type": "object",
+          "properties": {
+            "order_id": {
+              "type": "string"
+            },
+            "order_name": {
+              "type": "string"
+            },
+            "item": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "order_id",
+            "order_name",
+            "item"
+          ]
+        }
+      }
+    ]
+  }
+}
