@@ -1,0 +1,331 @@
+{
+  "generator-cedrus-api": {
+    "haveConfigFile": true,
+    "discover": {
+      "ask": false,
+      "apiConsumes": [
+        "application/json"
+      ],
+      "apiProduces": [
+        "application/json"
+      ]
+    },
+    "detail": {
+      "ask": false,
+      "isPublic": true,
+      "httpMethods": [
+        "get",
+        "put",
+        "post",
+        "patch",
+        "delete"
+      ],
+      "httpStatusCodes": [
+        "204",
+        "404",
+        "500"
+      ],
+      "versioning": {
+        "enabled": true,
+        "type": "uri",
+        "versionNumber": [
+          "v1"
+        ],
+        "uriOrder": "resourceFirst",
+        "contentTypeOrder": "applicationFirst",
+        "customHeaderName": "version"
+      },
+      "apiData": {
+        "returnDataType": "No"
+      },
+      "records": {
+        "limit": 10
+      },
+      "cache": {
+        "RedisEnable": false,
+        "RedisHost": "pub-redis-19334.dal-05.1.sl.garantiadata.com",
+        "RedisPort": "19334",
+        "RedisPassword": "zKvyYzznhsdvYwgq",
+        "RedisExpire": 180
+      },
+      "pagination": {
+        "PaginationEnable": true
+      },
+      "filter": {
+        "FilterEnable": false
+      },
+      "security": {
+        "enabled": false,
+        "type": "none"
+      },
+      "logging": {
+        "enabled": false
+      }
+    },
+    "deploy": {
+      "ask": false,
+      "apiApplicationType": "java",
+      "openWhisk": {
+        "OpenWhiskEnable": false
+      },
+      "tls": {
+        "TLSEnable": false
+      },
+      "cloudFoundry": {
+        "appName": "",
+        "appMemory": ""
+      },
+      "javaOptions": {
+        "basePackage": "ibm.io",
+        "packagingType": "war",
+        "framework": [
+          "spring",
+          "spring-boot"
+        ],
+        "springBootDeployment": "libertyProfile"
+      }
+    },
+    "multipleResources": {
+      "enabled": true,
+      "resources": [
+        {
+          "resourceName": "customer",
+          "jsonFilePath": "{\"type\":\"object\",\"properties\":{\"first name\":{\"type\":\"string\"},\"lastName\":{\"type\":\"string\"},\"age\":{\"type\":\"number\"}},\"required\":[\"first name\",\"lastName\",\"age\"]}",
+          "isPublic": true,
+          "httpMethods": [
+            "get",
+            "put",
+            "post",
+            "patch",
+            "delete"
+          ],
+          "httpStatusCodes": [
+            "204",
+            "404",
+            "500"
+          ],
+          "requireTestDataType": "Test Data",
+          "apiFakerMappingFileProvided": true,
+          "apiFakeMappingFileType": "object",
+          "apiFakerMappingFileLocation": {
+            "type": "object",
+            "properties": {
+              "first name": {
+                "type": "string",
+                "faker": "name.firstName"
+              },
+              "lastName": {
+                "type": "string",
+                "faker": "name.lastName"
+              },
+              "age": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              }
+            },
+            "required": [
+              "first name",
+              "lastName",
+              "age"
+            ]
+          },
+          "apiFakerMappingJsonType": "Data Schema",
+          "recordsLimit": "5",
+          "requireQuery": false,
+          "whichParameter": null,
+          "fake_data": [
+            {
+              "first name": "Douglas",
+              "lastName": "Wuckert",
+              "age": 79
+            },
+            {
+              "first name": "Jacynthe",
+              "lastName": "Williamson",
+              "age": 80
+            },
+            {
+              "first name": "Matilde",
+              "lastName": "Gutmann",
+              "age": 11
+            },
+            {
+              "first name": "Stella",
+              "lastName": "Sanford",
+              "age": 78
+            },
+            {
+              "first name": "Marietta",
+              "lastName": "Schroeder",
+              "age": 21
+            },
+            {
+              "first name": "Isadore",
+              "lastName": "Strosin",
+              "age": 49
+            },
+            {
+              "first name": "Bret",
+              "lastName": "Heidenreich",
+              "age": 42
+            },
+            {
+              "first name": "Arely",
+              "lastName": "Bernhard",
+              "age": 16
+            },
+            {
+              "first name": "Francesca",
+              "lastName": "Aufderhar",
+              "age": 43
+            },
+            {
+              "first name": "Ruth",
+              "lastName": "Schaden",
+              "age": 95
+            }
+          ]
+        }
+      ],
+      "testingMode": false
+    },
+    "javaOptions": {
+      "basePackage": "ibm.io",
+      "packagingType": "war",
+      "framework": [
+        "spring",
+        "spring-boot"
+      ],
+      "springBootDeployment": "libertyProfile"
+    },
+    "apiOverview": {
+      "apiName": "user",
+      "apiBasePath": "/api",
+      "apiDescription": "This is sample API being generated by cedrus-api generator"
+    },
+    "dataInput": {
+      "dataInputType": "JSON Input"
+    },
+    "JSONExtraction": [
+      {
+        "resourceName": "customer",
+        "jsonFilePath": "{\"type\":\"object\",\"properties\":{\"first name\":{\"type\":\"string\"},\"lastName\":{\"type\":\"string\"},\"age\":{\"type\":\"number\"}},\"required\":[\"first name\",\"lastName\",\"age\"]}",
+        "isPublic": true,
+        "httpMethods": [
+          "get",
+          "put",
+          "post",
+          "patch",
+          "delete"
+        ],
+        "httpStatusCodes": [
+          "204",
+          "404",
+          "500"
+        ],
+        "requireTestDataType": "Test Data",
+        "apiFakerMappingFileProvided": true,
+        "apiFakeMappingFileType": "object",
+        "apiFakerMappingFileLocation": {
+          "type": "object",
+          "properties": {
+            "first name": {
+              "type": "string",
+              "faker": "name.firstName"
+            },
+            "lastName": {
+              "type": "string",
+              "faker": "name.lastName"
+            },
+            "age": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "first name",
+            "lastName",
+            "age"
+          ]
+        },
+        "apiFakerMappingJsonType": "Data Schema",
+        "recordsLimit": "5",
+        "requireQuery": false,
+        "whichParameter": null,
+        "fake_data": [
+          {
+            "first name": "Douglas",
+            "lastName": "Wuckert",
+            "age": 79
+          },
+          {
+            "first name": "Jacynthe",
+            "lastName": "Williamson",
+            "age": 80
+          },
+          {
+            "first name": "Matilde",
+            "lastName": "Gutmann",
+            "age": 11
+          },
+          {
+            "first name": "Stella",
+            "lastName": "Sanford",
+            "age": 78
+          },
+          {
+            "first name": "Marietta",
+            "lastName": "Schroeder",
+            "age": 21
+          },
+          {
+            "first name": "Isadore",
+            "lastName": "Strosin",
+            "age": 49
+          },
+          {
+            "first name": "Bret",
+            "lastName": "Heidenreich",
+            "age": 42
+          },
+          {
+            "first name": "Arely",
+            "lastName": "Bernhard",
+            "age": 16
+          },
+          {
+            "first name": "Francesca",
+            "lastName": "Aufderhar",
+            "age": 43
+          },
+          {
+            "first name": "Ruth",
+            "lastName": "Schaden",
+            "age": 95
+          }
+        ],
+        "jsonSchema": {
+          "type": "object",
+          "properties": {
+            "first name": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "age": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "first name",
+            "lastName",
+            "age"
+          ]
+        }
+      }
+    ]
+  }
+}
